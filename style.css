@@ -21,6 +21,8 @@ body{
     animation: rotate 6s infinite alternate linear;
 }
 
+
+
 .login-card{
     position: relative;
     z-index: 3;

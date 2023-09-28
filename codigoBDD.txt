@@ -1,0 +1,9 @@
+CREATE TABLE productos (
+	id_Producto(10) unsigned NOT NULL AUTO_INCREMENT,
+	descripcion varchar(100) NOT NULL,
+	precio numeric(10) NOT NULL,
+	PRIMARY KEY(id_Producto),
+) ENGINE=InnoBD;
+
+INSERT INTO productos(detalle, precio) VALUES("Zapatillas Vans B&W", 32500),
+("Zapatillas Vans Originals", 45300), ("Zapatillas Vans Black", 38500);

@@ -17,7 +17,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
         <meta name="viewport" content="width=device-width">
         <title>Vans</title>
         <link rel="stylesheet" href="bootstrap.min.css">
-        <link href="css.estilos.css" rel="stylesheet">
+        <link href="#" rel="stylesheet">
     </head>
     <body>
         <header data-bs-theme="dark">
@@ -27,6 +27,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
                 <a href="#" class="navbar-brand d-flex align-items-center">
                     <strong>VANS</strong>
+                    
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +39,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
         <main>   
             <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-4" >
                     <?php foreach ($resultado as $row){ ?>
                     <div class="col">
                         <div class="card shadow-sm">
