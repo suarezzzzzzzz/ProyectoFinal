@@ -30,17 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `productos` (
   `id_producto` int(10) UNSIGNED NOT NULL,
   `descripcion` varchar(50) NOT NULL,
-  `precio` int(10) NOT NULL
+  `precio` int(10) NOT NULL,
+  `color` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id_producto`, `descripcion`, `precio`) VALUES
-(1, 'Zapatillas Vans B&W', 32500),
-(2, 'Zapatillas Vans Originals', 45300),
-(3, 'Zapatillas Vans Black', 38500);
+INSERT INTO `productos` (`id_producto`, `descripcion`, `precio`, `color`) VALUES
+(1, 'Zapatillas Vans B&W', 32500, 'negro'),
+(2, 'Zapatillas Vans Originals', 45300, 'negro'),
+(3, 'Zapatillas Vans Black', 38500, 'negro'),
+(4, 'Zapatillas Vans Classic', 27850, 'blanco');
 
 --
 -- Índices para tablas volcadas
