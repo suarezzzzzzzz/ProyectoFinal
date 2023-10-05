@@ -25,7 +25,7 @@ class RepositorioUsuario
 
     public function login($nombre_usuario, $clave)
     {
-        $q = "SELECT idusuario, clave FROM usuarios ";
+        $q = "SELECT id_usuario, clave FROM usuarios ";
         $q.= "WHERE usuario = ?";
         $query = self::$conexion->prepare($q);
         $query->bind_param("s", $nombre_usuario);
