@@ -1,5 +1,5 @@
 <?php
-	$database="login";
+	$database="tp_final";
 	$user='root';
 	$password='';
 

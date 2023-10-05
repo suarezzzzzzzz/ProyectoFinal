@@ -4,6 +4,6 @@ function credenciales() {
         'usuario'=>'root',
         'clave'=>'',
         'servidor'=>'localhost',
-        'base_de_datos'=>'login'
+        'base_de_datos'=>'tp_final'
     ];
 }
