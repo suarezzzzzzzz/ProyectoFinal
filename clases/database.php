@@ -3,7 +3,7 @@
 class Database{
 
     private $hostname = "localhost";
-    private $database = "productos";
+    private $database = "tp_final";
     private $username = "root";
     private $password = "";
     

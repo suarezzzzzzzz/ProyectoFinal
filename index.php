@@ -4,7 +4,7 @@ require_once 'clases/database.php';
 $db = new Database();
 $con = $db->conectar();
 
-$sql = $con->prepare("SELECT id_Producto, descripcion, precio FROM productos");
+$sql = $con->prepare("SELECT id_Producto, modelo, precio FROM productos");
 
 $sql->execute();
 $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -17,9 +17,9 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
         <meta name="viewport" content="width=device-width">
         <title>Vans</title>
         <link rel="stylesheet" href="bootstrap.min.css">
-        <link href="#" rel="stylesheet">
+        <link href="estilos.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="bg-dark">
         <header data-bs-theme="dark">
             <div class="collapse text-bg-dark" id="navbarHeader"></div>
             <div class="navbar navbar-dark bg-dark shadow-sm">
@@ -38,20 +38,21 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
         </header>
 
         <main>   
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-4" >
+            <div class="container my-4">
+                <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-4 display-flex" >
                     <?php foreach ($resultado as $row){ ?>
-                    <div class="col">
-                        <div class="card shadow-sm">
+                    <div class="col ">
+                        <div class="card shadow-md mb-3 display-flex h-86"   >
                             <?php
                             $id = $row['id_Producto'];
                             $imagen = "imagenes/producto/" . $id . ".jpg";
                             ?>
-                            <img src="<?php echo $imagen; ?>" >
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $row['descripcion']; ?></h5>
-                                <p class="card-text"> $ <?php echo $row['precio']; ?></p>
-                                <div class="d-flex justify-content-between align-items-center"></div>   
+                            <img class="" id="img" src="<?php echo $imagen; ?> " >
+                            <div class="card-body pb-0">
+                                <h4 class="text-center">VANS</h3>
+                                <h5 class="card-title text-center" > <?php echo $row['modelo']; ?></h5>
+                                <p class="card-text text-center"> $<?php echo $row['precio']; ?></p>
+                                <div class="d-flex justify-content-between align-items-center "></div>   
                                 
                             </div>
                         </div>                  

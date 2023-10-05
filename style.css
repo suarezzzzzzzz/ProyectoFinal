@@ -120,3 +120,6 @@ body{
         width: 400px;
     }
 }
+#img{
+    object-fit: fill;
+}
