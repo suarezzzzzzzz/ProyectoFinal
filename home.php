@@ -1,16 +1,7 @@
 <?php
-    require_once 'clases/usuario.php';
-    require_once 'clases/ControladorSesion.php';
-    session_start();
+   session_start();
 
-    /*Se comprueba que inicio de sesion del usuario*/
-    if (isset($_SESSION['usuario'])) 
-    {
-        $usuario = unserialize($_SESSION['usuario']);
-        date_default_timezone_set("America/Argentina/Buenos_Aires");
-        $cs = new ControladorSesion();
-        
-    }  
+   if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
     require_once 'clases/database.php';
 
 $db = new Database();
@@ -76,3 +67,10 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
+
+    <?php 
+}else{
+     header("Location: index.php");
+     exit();
+}
+?>
