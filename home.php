@@ -1,8 +1,18 @@
 <?php
-   session_start();
+require_once 'clases/Usuario.php';
+require_once 'clases/database.php';
 
-   if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
-    require_once 'clases/database.php';
+// Retomamos la sesión previamente iniciada, y recuperamos el objeto Usuario
+// que contiene los datos del usuario autenticado:
+session_start();
+if (isset($_SESSION['usuario'])) {
+    $usuario = unserialize($_SESSION['usuario']);
+    $nomApe = $usuario->getNombreApellido();
+} else {
+    // Si no hay usuario autenticado, redirigimos al login.
+    header('Location: index.php');
+}
+
 
 $db = new Database();
 $con = $db->conectar();
@@ -10,9 +20,8 @@ $con = $db->conectar();
 $sql = $con->prepare("SELECT id_Producto, modelo, precio FROM productos");
 
 $sql->execute();
-$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);     
+$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);   
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,9 +77,3 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
 
-    <?php 
-}else{
-     header("Location: index.php");
-     exit();
-}
-?>
