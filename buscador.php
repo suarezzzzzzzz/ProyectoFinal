@@ -47,7 +47,7 @@ $precio = $_POST['precio'];
     
     if ($result) {
         echo "<h2>Resultados de la búsqueda:</h2>";
-         ?>
+         ?> <link rel="stylesheet" href="bootstrap.min.css">
             <div class="container my-4">
                 <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-4 display-flex" >
                    <?php  foreach ($result as $row){ ?>
