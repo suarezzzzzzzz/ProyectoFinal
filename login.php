@@ -37,12 +37,11 @@ if (isset($_POST['usuario']) && isset($_POST['contraseña'])) {
 				header("Location: index.php?error=Usuario o contraseña INCORRECTA");
 		        exit();
 			
-		}
-			header("Location: index.php?error=Usuario o contraseña INCORRECTA");
+		}header("Location: index.php?error=Usuario o contraseña INCORRECTA");
 	        exit();
 		}
-	}
-}else{
+	}}
+{
 	header("Location: index.php");
 	exit();
 }
