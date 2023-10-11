@@ -105,7 +105,7 @@ body{
     color: #10449A;
 }
 
-.error {
+.alert alert-primary text-center {
 	background: #F2DEDE;
 	color: #A94442;
 	padding: 10px;
