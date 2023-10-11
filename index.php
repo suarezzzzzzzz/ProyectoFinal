@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<?php
-/*require_once 'clases/usuario.php';
-    session_start();
-    if (isset($_SESSION['usuario'])) {
-        header('Location: home.php');
-    }*/
-?>
-
-=======
->>>>>>> 69dd3264b80699bd37f06f2aa633fc0e1eb8bb39
 <!DOCTYPE html>
 <html>
 <head>

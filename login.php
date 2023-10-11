@@ -27,22 +27,21 @@ if (isset($_POST['usuario']) && isset($_POST['contraseña'])) {
 
 		if (mysqli_num_rows($result) === 1) {
 			$row = mysqli_fetch_assoc($result);
-            if ($row['usuario'] === $usuario && $row['password'] === $pass) {
+            if ($row['usuario'] === $usuario && $row['password'] === $pass){
             	$_SESSION['usuario'] = $row['usuario'];
-            	$_SESSION['nombre'] = $row['nombre'];
+				$_SESSION['nombre'] = $row['nombre'];
             	$_SESSION['id'] = $row['id'];
             	header("Location: home.php");
 		        exit();
             }else{
 				header("Location: index.php?error=Usuario o contraseña INCORRECTA");
 		        exit();
-			}
-		}else{
+			
+		}
 			header("Location: index.php?error=Usuario o contraseña INCORRECTA");
 	        exit();
 		}
 	}
-	
 }else{
 	header("Location: index.php");
 	exit();
