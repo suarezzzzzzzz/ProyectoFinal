@@ -6,11 +6,6 @@ $modelo = $_POST['modelo'];
 $color = $_POST['color'];
 $precio = $_POST['precio'];
 
-
-    /*if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
-    require_once 'clases/database.php';
-    require_once 'clases/conexion.php';*/
-
 $db = new Database();
 $con = $db->conectar();
 
