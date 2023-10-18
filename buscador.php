@@ -48,7 +48,7 @@ $result = $saql->fetchAll(PDO::FETCH_ASSOC);
                 </div> 
         </body>
         <?php          
-        } }else {
+        } else {
             header('Location: ' . 'home.php');
             echo alert("No se encontraron resultados.") ;
         }

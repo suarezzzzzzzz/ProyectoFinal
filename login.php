@@ -17,6 +17,7 @@ if (empty($_POST['usuario']) || empty($_POST['clave'])) {
     }
 }
 
-header("Location: index.php");
+// Efectuamos la redirección según corresponda:
+header('Location: ' . $redirigir);
 	
 

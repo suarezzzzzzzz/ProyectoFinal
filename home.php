@@ -1,9 +1,9 @@
 <?php
 require_once 'clases/Usuario.php';
 require_once 'clases/database.php';
-//require_once 'clases/RepositorioUsuario.php';
 
-
+// Retomamos la sesión previamente iniciada, y recuperamos el objeto Usuario
+// que contiene los datos del usuario autenticado:
 session_start();
 if (isset($_SESSION['usuario'])) {
     $usuario = unserialize($_SESSION['usuario']);
@@ -39,7 +39,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                 <a href="#" class="navbar-brand d-flex align-items-center">
                     <strong>VANS</strong> 
                 </a>
-
+        </div> 
                 <button class="btn btn-light font-weight-bold">
                     <nav class="menu"> 
                         <a href="Crud.php" class="text-dark">CRUD</a>
