@@ -17,7 +17,6 @@ if (empty($_POST['usuario']) || empty($_POST['clave'])) {
     }
 }
 
-	
 header("Location: index.php");
 	
 
