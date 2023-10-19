@@ -68,7 +68,7 @@ p.subtitulo2 {
       margin-top: 40px;
       background: #D57B45;}
 
-.menu ul {}
+      .menu ul {}
 
 .menu ul li {
              list-style: none;
@@ -85,22 +85,6 @@ p.subtitulo2 {
 .menu ul li a:hover{
              background: #fff;
              color: #D57B45;
-}
-
-
-#crossfit{
-          margin-top: 10px;
-          width: 900px;
-          height: 250px;
-
-}
-
-#categorias {
-             width: 900px;
-             height: auto; overflow: hidden;
-             border: 0px solid ;
-             margin-top: 10px;
-
 }
 
 .uno {
@@ -156,7 +140,7 @@ p.subtitulo2 {
 
 #der{
      width: 283px;
-     height: auto;overflow:  
+     height: auto;overflow:
      border: 1px solid #ccc;
      float: right;
 
@@ -181,7 +165,7 @@ body {
 }
 
 
-              <!--/FORMULARIO-->
+<!--/FORMULARIO-->           
 
 td.categformulario {
   background:#F3D5B0; 

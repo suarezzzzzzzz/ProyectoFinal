@@ -38,11 +38,10 @@
 					':id_producto' =>$id_producto
 				));
 				header('Location: Crud.php');
-			}
-		}else{
+			}else{
 			echo "<script> alert('Los campos estan vacios');</script>";
 		}
-	
+	}
 
 ?>
 <!DOCTYPE html>
@@ -52,10 +51,28 @@
 	<title>Editar Articulo</title>
 	<link rel="stylesheet" href="css/estiloCRUD.css">
 	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="stylesheet" href="bootstrap.min.css">
 </head>
-<body>
+<header data-bs-theme="dark">
+            <div class="collapse text-bg-dark" id="navbarHeader"></div>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+
+                <a href="home.php" class="navbar-brand d-flex align-items-center">
+                    <strong>VANS</strong> 
+                </a>
+        </div> 
+                <button class="btn btn-light font-weight-bold">
+                    <nav class=""> 
+                        <a href="Crud.php" class="text-dark">CRUD</a>
+                    </nav>
+                </button>
+            </div>
+            </div>
+        </header>
+<body class="border-dark">
 	<div class="contenedor">
-		<h2 class="titular" aling="center">.: Editar Articulo :.</h2>
+		<h1 class="titular text-dark font-weight-bold" aling="center">.: Editar artículo :.</h1>
 		<form action="" method="post">
 			<div class="form-group">
 				<input type="text" name="modelo" value="<?php if($resultado) echo $resultado['modelo']; ?>" class="input__text">

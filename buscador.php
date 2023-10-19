@@ -1,3 +1,22 @@
+<html>
+<header data-bs-theme="dark">
+            <div class="collapse text-bg-dark" id="navbarHeader"></div>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+
+                <a href="home.php" class="navbar-brand d-flex align-items-center">
+                    <strong>VANS</strong> 
+                </a>
+        </div> 
+                <button class="btn btn-light font-weight-bold">
+                    <nav class="menu"> 
+                        <a href="Crud.php" class="text-dark">CRUD</a>
+                    </nav>
+                </button>
+            </div>
+            </div>
+        </header>
+</html>
 <?php
 require_once 'clases/database.php';
 require_once 'clases/filtrar.php';
@@ -14,20 +33,14 @@ $aql = $filtro->getQuery();
 
 $saql = $con->prepare($aql); 
 $saql->execute();
-$result = $saql->fetchAll(PDO::FETCH_ASSOC); 
+$result = $saql->fetchAll(PDO::FETCH_ASSOC);
     
-    if ($result) {
+    if ($result) { 
         echo "<h2>Resultados de la búsqueda:</h2>";
-<<<<<<< HEAD
-         ?><link rel="stylesheet" href="bootstrap.min.css">
-        <body class="bg-dark">   
-            <div class="container my-4 ">
-                <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-4 display-flex " >
-=======
-         ?> <link rel="stylesheet" href="bootstrap.min.css">
+         ?><body class="bg-dark">      
+         <link rel="stylesheet" href="bootstrap.min.css">
             <div class="container my-4">
                 <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-4 display-flex" >
->>>>>>> 48d4b37463d3bc5a9f43c01ad02f1f9ff3e011e9
                    <?php  foreach ($result as $row){ ?>
                     <div class="col ">
                         <div class="card shadow-md mb-3 display-flex h-86"   >
@@ -47,17 +60,10 @@ $result = $saql->fetchAll(PDO::FETCH_ASSOC);
                     </div> 
                     <?php  } ;  ?>
                 </div> 
-        </body>
+            </body>
         <?php          
         } else {
             header('Location: ' . 'home.php');
             echo alert("No se encontraron resultados.") ;
         }
-<<<<<<< HEAD
-        ?>
-=======
-}else{
-    header("Location: home.php");
-    exit();
-} ?>
->>>>>>> 48d4b37463d3bc5a9f43c01ad02f1f9ff3e011e9
+?>

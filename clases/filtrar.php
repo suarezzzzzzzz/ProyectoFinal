@@ -34,21 +34,6 @@ class Filtrar
         $sql .= " ORDER BY precio DESC";
     }
     return $sql;
-    }
-
-
-
-
-    
+    }    
 }
-
-
-
-
-
-
-
-
-
-
 ?>

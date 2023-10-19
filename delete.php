@@ -1,5 +1,9 @@
 <?php 
 
+include_once 'clases/conexionCRUD.php';
+
+
+$id_producto = $_POST['id_producto'];
 	include_once 'clases/conexionCRUD.php';
 	if(isset($_GET['id_producto'])){
 		$id_producto=(int) $_GET['id_producto'];
@@ -11,4 +15,5 @@
 	}else{
 		header('Location: Crud.php');
 	}
+
  ?>

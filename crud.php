@@ -39,12 +39,30 @@
 	<title>CRUD</title>
 	<link rel="stylesheet" href="css/estilo.css">
 	<link rel="stylesheet" href="css/estiloCRUD.css">
+	<link rel="stylesheet" href="bootstrap.min.css">
 
 </head>
-<body >
+<header data-bs-theme="dark">
+            <div class="collapse text-bg-dark" id="navbarHeader"></div>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+
+                <a href="home.php" class="navbar-brand d-flex align-items-center">
+                    <strong>VANS</strong> 
+                </a>
+        </div> 
+                <button class="btn btn-light font-weight-bold">
+                    <nav class=""> 
+                        <a href="Crud.php" class="text-dark">CRUD</a>
+                    </nav>
+                </button>
+            </div>
+            </div>
+        </header>
+<body class="border-dark ">
 	<div class="contenedor ">
-		<a class="main" href="home.php">
-			<h1 class="titulo2 " >ABM VANS</h1>
+		<a href="home.php">
+			<h1 class="titulo2 text-dark">ABM VANS</h1>
 			</a>
 		<div class="barra__buscador">
 			<form action="" class="formulario" method="post">
@@ -54,8 +72,8 @@
 				<a href="insert.php" class="btn btn__nuevo">AGREGAR</a>
 			</form>
 		</div>
-		<table>
-			<tr class="head">
+		<table class="table-striped text-light table-bordered ">
+			<tr class="head bg-dark ">
 				<td>Id</td>
 				<td>Modelo</td>
 				<td>Precio</td>
@@ -64,7 +82,7 @@
 				<td colspan="2">Acción</td>
 			</tr>
 			<?php foreach($resultado as $fila):?>
-				<tr >
+				<tr>
 					<td><?php echo $fila['id_producto']; ?></td>
 					<td><?php echo $fila['modelo']; ?></td>
 					<td><?php echo $fila['precio']; ?></td>

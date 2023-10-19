@@ -7,7 +7,7 @@
 		$color=$_POST['color'];
 		$activo=$_POST['activo'];
 
-		if(!empty($modelo) && !empty($precio) && !empty($color)){
+		if(!empty($modelo) && !empty($precio) && !empty($color) && !empty($activo)){
 			
 				$consulta_insert=$con->prepare('INSERT INTO productos(modelo,precio,color, activo) VALUES(:modelo,:precio,:color,:activo)');
 				$consulta_insert->execute(array(
@@ -19,14 +19,10 @@
 					
 				));
 				header('Location: Crud.php');
-			}
-		}else{
+			}else{
 			echo "<script> alert('Los campos estan vacios');</script>";
 		}
-
-	
-
-
+	}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -35,11 +31,29 @@
 	<title>Nuevo Articulo</title>
 	<link rel="stylesheet" href="css/estilo.css">
 	<link rel="stylesheet" href="css/estiloCRUD.css">
+	<link rel="stylesheet" href="bootstrap.min.css">
 </head>
-<body>
+<header data-bs-theme="dark">
+            <div class="collapse text-bg-dark" id="navbarHeader"></div>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+
+                <a href="home.php" class="navbar-brand d-flex align-items-center">
+                    <strong>VANS</strong> 
+                </a>
+        </div> 
+                <button class="btn btn-light font-weight-bold">
+                    <nav class=""> 
+                        <a href="Crud.php" class="text-dark">CRUD</a>
+                    </nav>
+                </button>
+            </div>
+            </div>
+        </header>
+<body class="border-dark ">
 	<div class="contenedor">
-		<h2 class="titular" aling="center">.: Nuevo Articulo :.</h2>
-		<form action="" method="post">
+		<h1 class="titular text-dark font-weight-bold" aling="center">.: Nuevo artículo :.</h1>
+		<form action="insert.php" method="post">
 			<div class="form-group">
 				<input type="text" name="modelo" placeholder="Modelo" class="input__text">
 			</div>
@@ -47,16 +61,17 @@
 				<input type="text" name="precio" placeholder="Precio" class="input__text">
 			</div>
 			<div class="form-group">
-				<input type="text" name="color" placeholder="color" class="input__text">
+				<input type="text" name="color" placeholder="Color" class="input__text">
 			</div>
 			<div class="form-group">
-				<input type="text" name="activo" placeholder="activo" class="input__text">
-			</div>
+				<input type="text" name="activo" placeholder="Activo" class="input__text">
+			<div>
 			<div class="btn__group">
-				<a href="Crud.php" class="btn btn__danger">Cancelar</a>
+				<a href="crud.php" class="btn btn__danger">Cancelar</a>
 				<input type="submit" name="guardar" value="Guardar" class="btn btn__primary">
 			</div>
 		</form>
 	</div>
 </body>
 </html>
+
