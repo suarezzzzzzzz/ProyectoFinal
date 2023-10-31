@@ -45,6 +45,12 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                         <a href="Crud.php" class="text-dark">CRUD</a>
                     </nav>
                 </button>
+
+                <button class="btn btn-light font-weight-bold">
+                    <nav class="menu">  
+                        <a href="logout.php" class="text-dark">Cerrar session</a>
+                    </nav>
+                </button>
             </div>
             </div>
         </header>
