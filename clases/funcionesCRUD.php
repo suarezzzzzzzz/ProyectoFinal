@@ -1,5 +1,6 @@
 <?php
 require_once 'clases/conexionCRUD.php';
+require_once 'clases/calzado.php';
 
 
 class funcionesCRUD extends Connection{
@@ -71,17 +72,38 @@ class funcionesCRUD extends Connection{
         $eliminar = $this->con->query('DELETE FROM productos WHERE id_producto=' . $id_producto );
         header("Location: crud.php");
     }
-    public function updateProducto($modelo, $precio, $color, $activo, $id_producto){
-        $sql = "UPDATE productos SET modelo=:modelo,precio=:precio,color=:color,activo=:activo WHERE id_producto=:id_producto";
-        $query = $this->con->prepare($sql);
-        $query->bindValue(':modelo',$modelo);
-        $query->bindValue(':precio',$precio);
-        $query->bindValue(':color',$color);
-        $query->bindValue(':activo',$activo);
-        $query->bindValue(':id_producto',$id_producto);
-        $query->execute();
-        header('location:index.php');
-    }
 
-}
+    /*ACTUALIZAR */
+    public function updateProducto($modelo, $precio,$color, $activo){
+        $sql = "UPDATE productos SET modelo=$modelo,precio=$precio,color=$color,activo=$activo WHERE id_producto=' .$this->id_producto";
+        
+        $query = $this->con->prepare($sql);
+        $query->bindValue(':modelo',$resultado->getmodelo());
+        $query->bindValue(':precio',$resultado->getprecio());
+        $query->bindValue(':color',$resultado->getcolor());
+        $query->bindValue(':activo',$resultado->getactivo());
+        $query->execute();
+        
+        header('location:crud.php');
+      }
+    
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*public function buscarProducto($valor_buscar){
+        $result = $this->con->query("SELECT * FROM productos WHERE modelo LIKE '$valor_buscar'");
+        $buscar = $result->fetch_all();
+        return $buscar;        
+    }*/
 

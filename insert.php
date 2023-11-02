@@ -60,8 +60,7 @@ if (isset($_POST['guardar'])){
 	$precio = $_POST['precio'];
 	$color = $_POST['color'];
 	$activo = $_POST['activo'];
-
-	require_once 'clases/funcionesCRUD.php';
+	
 	$insert = new funcionesCRUD();
 	$insert->insertProducto($modelo, $precio, $color, $activo);
 }

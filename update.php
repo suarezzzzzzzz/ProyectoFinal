@@ -1,86 +1,22 @@
 <?php
 	include_once 'clases/conexionCRUD.php';
 	include_once 'clases/funcionesCRUD.php';
-	
-	
-	/*if(isset($_GET['id_producto'])){
-		$id_producto=(int) $_GET['id_producto'];
-
-		$buscar_id=$con->prepare('SELECT * FROM productos WHERE id_producto=:id_producto LIMIT 1');
-		$buscar_id->execute(array(
-			':id_producto'=>$id_producto
-		));
-		$resultado=$buscar_id->fetch();
-	}else{
-		header('Location: Crud.php');
-	}*/
-
-	/*$productos = new funcionesCRUD();
-	$resultado = $productos->getProducto();*/
-
-	$prod = new funcionesCRUD();
-	$id_producto = $_GET['id_producto'];
-	$resultado = $prod->searchProducto($id_producto);
-
 
 	if (isset($_POST['guardar'])){
 		$modelo = $_POST['modelo'];
 		$precio = $_POST['precio'];
 		$color = $_POST['color'];
 		$activo = $_POST['activo'];
-
-		require_once 'clases/funcionesCRUD.php';
-		$produ = new funcionesCRUD();
-		$produ->updateProducto($modelo, $precio, $color, $activo, $id_producto);	
-
-	}
-
-
-
-
-
-	/*if(isset($_POST['guardar'])){
-        $modelo=$_POST['modelo'];
-		$precio=$_POST['precio'];
-		$color=$_POST['color'];
-		$activo=$_POST['activo'];
-		$id_producto=(int) $_GET['id_producto'];
-
-		if(!empty($modelo) &&  !empty($precio) && !empty($color) ){
 		
-				$consulta_update=$con->prepare(' UPDATE productos SET  
-					modelo=:modelo,
-					precio=:precio,
-					color=:color,
-					activo=:activo
-					WHERE id_producto=:id_producto;'
-				);
-				$consulta_update->execute(array(
-					':modelo' =>$modelo,
-					':precio' =>$precio,
-					':color' =>$color,
-					':activo' =>$activo,
-					':id_producto' =>$id_producto
-				));
-				header('Location: Crud.php');
-			}else{
-			echo "<script> alert('Los campos estan vacios');</script>";
-		}
-	}*/
-	
-	if(isset($_GET['guardar'])){
-		$id_producto=(int) $_GET['id_producto'];
-		$modelo = $_POST['modelo'];
-		$precio = $_POST['precio'];
-		$color = $_POST['color'];
-		$activo = $_POST['activo'];
-
-		require_once 'clases/funcionesCRUD';
-		$modificar = new funcionesCRUD();
-		$resultado = $modificar->updateProducto($modelo, $precio,$color,$activo);
+	$actualizar = new funcionesCRUD();
+	$update = $actualizar->updateProducto($modelo, $precio, $color, $activo);
 		
-	}
 	
+}
+	require_once 'clases/funcionesCRUD';
+	$modificar = new funcionesCRUD();
+	$resultado = $modificar->updateProducto($modelo, $precio,$color,$activo);
+		
 ?>
 <!DOCTYPE html>
 <html lang="es">
