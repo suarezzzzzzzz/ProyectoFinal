@@ -1,47 +1,20 @@
 <?php
 	include_once 'clases/conexionCRUD.php';
+	include_once 'clases/funcionesCRUD.php';
 
-	if(isset($_GET['id_producto'])){
-		$id_producto=(int) $_GET['id_producto'];
-
-		$buscar_id=$con->prepare('SELECT * FROM productos WHERE id_producto=:id_producto LIMIT 1');
-		$buscar_id->execute(array(
-			':id_producto'=>$id_producto
-		));
-		$resultado=$buscar_id->fetch();
-	}else{
-		header('Location: Crud.php');
-	}
-
-
-	if(isset($_POST['guardar'])){
-        $modelo=$_POST['modelo'];
-		$precio=$_POST['precio'];
-		$color=$_POST['color'];
-		$activo=$_POST['activo'];
-		$id_producto=(int) $_GET['id_producto'];
-
-		if(!empty($modelo) &&  !empty($precio) && !empty($color) ){
+	if (isset($_POST['guardar'])){
+		$modelo = $_POST['modelo'];
+		$precio = $_POST['precio'];
+		$color = $_POST['color'];
+		$activo = $_POST['activo'];
 		
-				$consulta_update=$con->prepare(' UPDATE productos SET  
-					modelo=:modelo,
-					precio=:precio,
-					color=:color,
-					activo=:activo
-					WHERE id_producto=:id_producto;'
-				);
-				$consulta_update->execute(array(
-					':modelo' =>$modelo,
-					':precio' =>$precio,
-					':color' =>$color,
-					':activo' =>$activo,
-					':id_producto' =>$id_producto
-				));
-				header('Location: Crud.php');
-			}else{
-			echo "<script> alert('Los campos estan vacios');</script>";
-		}
-	}
+	$actualizar = new funcionesCRUD();
+	$update = $actualizar->updateProducto($modelo, $precio, $color, $activo);
+		
+	
+}
+
+
 
 ?>
 <!DOCTYPE html>

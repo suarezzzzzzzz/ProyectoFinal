@@ -1,24 +1,16 @@
 <?php
 	include_once 'clases/conexionCRUD.php';
+	include_once 'clases/funcionesCRUD.php';
+	include_once 'clases/database.php';
 
-	$sentencia_select=$con->prepare('SELECT *FROM productos ORDER BY id_producto DESC');
-	$sentencia_select->execute();
-	$resultado=$sentencia_select->fetchAll();
 
-	// metodo buscar
-	if(isset($_POST['btn_buscar'])){
-		$buscar_text=$_POST['buscar'];
-		$select_buscar=$con->prepare('
-			SELECT *FROM productos WHERE modelo LIKE :campo OR color LIKE :campo;'
-		);
+	/*$db = new Database();
+	$con = $db->conectar();*/
 
-		$select_buscar->execute(array(
-			':campo' =>"%".$buscar_text."%"
-		));
-
-		$resultado=$select_buscar->fetchAll();
-
-	}
+	$productos = new funcionesCRUD();
+	$resultado = $productos->getProducto();
+	
+	
 
 	session_start();
 
@@ -26,10 +18,7 @@
 	if($varsesion == null || $varsesion= '') {
 
 		header("Location:index.php");
-
-
 	}
-
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +55,7 @@
 			</a>
 		<div class="barra__buscador">
 			<form action="" class="formulario" method="post">
-				<input type="text" name="buscar" placeholder="buscar nombre o marca" 
+				<input type="text" name="buscar" placeholder="buscar modelo o color" 
 				value="<?php if(isset($buscar_text)) echo $buscar_text; ?>" class="input__text">
 				<input type="submit" class="btn" name="btn_buscar" value="Buscar">
 				<a href="insert.php" class="btn btn__nuevo">AGREGAR</a>
@@ -81,7 +70,7 @@
 				<td>Activo</td>
 				<td colspan="2">Acción</td>
 			</tr>
-			<?php foreach($resultado as $fila):?>
+			<?php foreach($resultado as $fila):?>			
 				<tr>
 					<td><?php echo $fila['id_producto']; ?></td>
 					<td><?php echo $fila['modelo']; ?></td>
