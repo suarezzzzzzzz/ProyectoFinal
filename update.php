@@ -1,7 +1,9 @@
 <?php
 	include_once 'clases/conexionCRUD.php';
-
-	if(isset($_GET['id_producto'])){
+	include_once 'clases/funcionesCRUD.php';
+	
+	
+	/*if(isset($_GET['id_producto'])){
 		$id_producto=(int) $_GET['id_producto'];
 
 		$buscar_id=$con->prepare('SELECT * FROM productos WHERE id_producto=:id_producto LIMIT 1');
@@ -11,10 +13,33 @@
 		$resultado=$buscar_id->fetch();
 	}else{
 		header('Location: Crud.php');
+	}*/
+
+	/*$productos = new funcionesCRUD();
+	$resultado = $productos->getProducto();*/
+
+	$prod = new funcionesCRUD();
+	$id_producto = $_GET['id_producto'];
+	$resultado = $prod->searchProducto($id_producto);
+
+
+	if (isset($_POST['guardar'])){
+		$modelo = $_POST['modelo'];
+		$precio = $_POST['precio'];
+		$color = $_POST['color'];
+		$activo = $_POST['activo'];
+
+		require_once 'clases/funcionesCRUD.php';
+		$produ = new funcionesCRUD();
+		$produ->updateProducto($modelo, $precio, $color, $activo, $id_producto);	
+
 	}
 
 
-	if(isset($_POST['guardar'])){
+
+
+
+	/*if(isset($_POST['guardar'])){
         $modelo=$_POST['modelo'];
 		$precio=$_POST['precio'];
 		$color=$_POST['color'];
@@ -41,8 +66,21 @@
 			}else{
 			echo "<script> alert('Los campos estan vacios');</script>";
 		}
-	}
+	}*/
+	
+	if(isset($_GET['guardar'])){
+		$id_producto=(int) $_GET['id_producto'];
+		$modelo = $_POST['modelo'];
+		$precio = $_POST['precio'];
+		$color = $_POST['color'];
+		$activo = $_POST['activo'];
 
+		require_once 'clases/funcionesCRUD';
+		$modificar = new funcionesCRUD();
+		$resultado = $modificar->updateProducto($modelo, $precio,$color,$activo);
+		
+	}
+	
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -74,18 +112,20 @@
 	<div class="contenedor">
 		<h1 class="titular text-dark font-weight-bold" aling="center">.: Editar artículo :.</h1>
 		<form action="" method="post">
+			<?php foreach($resultado as $value){?>			
 			<div class="form-group">
-				<input type="text" name="modelo" value="<?php if($resultado) echo $resultado['modelo']; ?>" class="input__text">
+				<input type="text" name="modelo" value="<?php $value['modelo']; ?>" class="input__text">
 			</div>
 			<div class="form-group">
-				<input type="text" name="precio" value="<?php if($resultado) echo $resultado['precio']; ?>" class="input__text">
+				<input type="text" name="precio" value="<?php $value['precio']; ?>" class="input__text">
 			</div>
 			<div class="form-group">
-				<input type="text" name="color" value="<?php if($resultado) echo $resultado['color']; ?>" class="input__text">
+				<input type="text" name="color" value="<?php $value['color']; ?>" class="input__text">
 			</div>
 			<div class="form-group">
-				<input type="text" name="activo" value="<?php if($resultado) echo $resultado['activo']; ?>" class="input__text">
+				<input type="text" name="activo" value="<?php $value['activo']; ?>" class="input__text">
 			</div>
+			<?php } ?>
 			<div class="btn__group">
 				<a href="Crud.php" class="btn btn__danger">Cancelar</a>
 				<input type="submit" name="guardar" value="Guardar" class="btn btn__primary">

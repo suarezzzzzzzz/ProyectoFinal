@@ -1,12 +1,33 @@
 <?php
 	include_once 'clases/conexionCRUD.php';
+	include_once 'clases/funcionesCRUD.php';
+	
+	session_start();
 
-	$sentencia_select=$con->prepare('SELECT *FROM productos ORDER BY id_producto DESC');
-	$sentencia_select->execute();
-	$resultado=$sentencia_select->fetchAll();
+	$varsesion = $_SESSION['usuario'];
+	if($varsesion == null || $varsesion= '') {
 
+		header("Location:index.php");
+	}
+
+
+	//$btn_buscar = $_GET['btn_buscar'];
+	
+	//$filtrar = new funcionesCRUD();
+	//$result = $filtrar->buscarProducto();
+
+	/*$db = new Database();
+	$con = $db->conectar();*/
+	
+	$productos = new funcionesCRUD();
+	$resultado = $productos->getProducto();
+
+	
+
+	
+	
 	// metodo buscar
-	if(isset($_POST['btn_buscar'])){
+	/*if(isset($_POST['btn_buscar'])){
 		$buscar_text=$_POST['buscar'];
 		$select_buscar=$con->prepare('
 			SELECT *FROM productos WHERE modelo LIKE :campo OR color LIKE :campo;'
@@ -17,19 +38,7 @@
 		));
 
 		$resultado=$select_buscar->fetchAll();
-
-	}
-
-	session_start();
-
-	$varsesion = $_SESSION['usuario'];
-	if($varsesion == null || $varsesion= '') {
-
-		header("Location:index.php");
-
-
-	}
-
+	}*/
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +74,7 @@
 			<h1 class="titulo2 text-dark">ABM VANS</h1>
 			</a>
 		<div class="barra__buscador">
-			<form action="" class="formulario" method="post">
+			<form action="search.php" class="formulario" method="post">
 				<input type="text" name="buscar" placeholder="buscar nombre o marca" 
 				value="<?php if(isset($buscar_text)) echo $buscar_text; ?>" class="input__text">
 				<input type="submit" class="btn" name="btn_buscar" value="Buscar">
@@ -81,19 +90,26 @@
 				<td>Activo</td>
 				<td colspan="2">Acción</td>
 			</tr>
-			<?php foreach($resultado as $fila):?>
+			<?php foreach($resultado as $fila):?>			
 				<tr>
 					<td><?php echo $fila['id_producto']; ?></td>
 					<td><?php echo $fila['modelo']; ?></td>
 					<td><?php echo $fila['precio']; ?></td>
 					<td><?php echo $fila['color']; ?></td>
 					<td><?php echo $fila['activo']; ?></td>
-					<td><a href="update.php?id_producto=<?php echo $fila['id_producto']; ?>"  class="btn__update" >Editar</a></td>
+					<td><a href="update.php?id_producto=<?php echo $fila['id_producto']; ?>"  class="btn__update">Editar</a></td>
 					<td><a href="delete.php?id_producto=<?php echo $fila['id_producto']; ?>" class="btn__delete">Eliminar</a></td>
 				</tr>
 			<?php endforeach ?>
 
 		</table>
 	</div>
+	<?php
+		if (isset($_GET['msj'])){
+			$msj = $_GET['msj'];
+			echo $msj;
+		}
+	?>
 </body>
 </html>
+<?php

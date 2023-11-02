@@ -1,6 +1,7 @@
 <?php
 require_once 'clases/Usuario.php';
 require_once 'clases/database.php';
+include_once 'clases/funcionesCRUD.php';
 
 // Retomamos la sesión previamente iniciada, y recuperamos el objeto Usuario
 // que contiene los datos del usuario autenticado:
@@ -12,14 +13,14 @@ if (isset($_SESSION['usuario'])) {
     // Si no hay usuario autenticado, redirigimos al login.
     header('Location: index.php');
 }
-
+//llama a la funcion conectar para conectarse a la BDD
 $db = new Database();
 $con = $db->conectar();
 
-$sql = $con->prepare("SELECT id_Producto, modelo, precio, color, activo FROM productos WHERE activo = 1");
+//llama a la funcion queryHome para mostrar todos los productos en el html
+$result = new funcionesCRUD();
+$resultado = $result->queryHome();
 
-$sql->execute();
-$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html>

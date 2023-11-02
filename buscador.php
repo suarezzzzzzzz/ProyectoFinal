@@ -19,21 +19,20 @@
 </html>
 <?php
 require_once 'clases/database.php';
-require_once 'clases/filtrar.php';
+require_once 'clases/funcionesCRUD.php';
 
 $modelo = $_POST['modelo'];
 $color = $_POST['color'];
 $precio = $_POST['precio'];
 
+//llama a la funcion conectar para conectarse a la BDD
 $db = new Database();
 $con = $db->conectar();
 
-$filtro = new Filtrar($modelo, $color, $precio);
-$aql = $filtro->getQuery();
+//llama a la funcion filtrarProducto para hacer el filtrado
+$filtro = new funcionesCRUD();
+$result = $filtro->filtrarProducto($modelo, $precio, $color);
 
-$saql = $con->prepare($aql); 
-$saql->execute();
-$result = $saql->fetchAll(PDO::FETCH_ASSOC);
     
     if ($result) { 
         echo "<h2>Resultados de la búsqueda:</h2>";

@@ -1,29 +1,9 @@
 <?php 
-	include_once 'clases/conexionCRUD.php';
-	
-	if(isset($_POST['guardar'])){
-		$modelo=$_POST['modelo'];
-		$precio=$_POST['precio'];
-		$color=$_POST['color'];
-		$activo=$_POST['activo'];
+require_once 'clases/funcionesCRUD.php';
+require_once 'clases/conexionCRUD.php';
 
-		if(!empty($modelo) && !empty($precio) && !empty($color) && !empty($activo)){
-			
-				$consulta_insert=$con->prepare('INSERT INTO productos(modelo,precio,color, activo) VALUES(:modelo,:precio,:color,:activo)');
-				$consulta_insert->execute(array(
-					':modelo' =>$modelo,
-					':precio' =>$precio,
-					':color' =>$color,
-					':activo' =>$activo
-
-					
-				));
-				header('Location: Crud.php');
-			}else{
-			echo "<script> alert('Los campos estan vacios');</script>";
-		}
-	}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -74,4 +54,17 @@
 	</div>
 </body>
 </html>
+<?php
+if (isset($_POST['guardar'])){
+	$modelo = $_POST['modelo'];
+	$precio = $_POST['precio'];
+	$color = $_POST['color'];
+	$activo = $_POST['activo'];
+
+	require_once 'clases/funcionesCRUD.php';
+	$insert = new funcionesCRUD();
+	$insert->insertProducto($modelo, $precio, $color, $activo);
+}
+
+?>
 
