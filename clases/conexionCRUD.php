@@ -1,15 +1,17 @@
 <?php
-	$database="tp_final";
-	$user='root';
-	$password='';
+include_once 'clases/config.php';
 
 
-try {
-	
-	$con=new PDO('mysql:host=localhost;dbname='.$database,$user,$password);
+class Connection{
 
-} catch (PDOException $e) {
-	echo "Error".$e->getMessage();
+	public $con;
+
+	public function __construct(){
+		$this->con = new mysqli(host, user, password, database);
+		if($this->con->connect_errno){
+			return "Error de conexion";
+		}
+	}
 }
 
 ?>
