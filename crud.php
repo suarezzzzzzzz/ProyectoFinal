@@ -1,6 +1,6 @@
 <?php
 	include_once 'clases/conexionCRUD.php';
-	include_once 'clases/funcionesCRUD.php';
+	include_once 'clases/queries.php';
 	include_once 'clases/database.php';
 
 	session_start();
@@ -11,7 +11,7 @@
 		header("Location:index.php");
 	}
 
-	$productos = new funcionesCRUD();
+	$productos = new queries();
 	$resultado = $productos->getProducto();
 	
 ?>

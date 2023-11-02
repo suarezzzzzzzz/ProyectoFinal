@@ -2,8 +2,7 @@
 require_once 'clases/conexionCRUD.php';
 require_once 'clases/calzado.php';
 
-
-class funcionesCRUD extends Connection{
+class queries extends Connection{
 
     protected $modelo;
     protected $precio;
@@ -50,7 +49,6 @@ class funcionesCRUD extends Connection{
         $result= $query->fetch_all(MYSQLI_ASSOC);
         return $result;
         } 
-    
 
     public function getProducto(){
         $result = $this->con->query('SELECT * FROM productos');
@@ -88,19 +86,6 @@ class funcionesCRUD extends Connection{
       }
     
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*public function buscarProducto($valor_buscar){
         $result = $this->con->query("SELECT * FROM productos WHERE modelo LIKE '$valor_buscar'");
         $buscar = $result->fetch_all();

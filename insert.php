@@ -1,5 +1,5 @@
 <?php 
-require_once 'clases/funcionesCRUD.php';
+require_once 'clases/queries.php';
 require_once 'clases/conexionCRUD.php';
 
 ?>
@@ -61,7 +61,7 @@ if (isset($_POST['guardar'])){
 	$color = $_POST['color'];
 	$activo = $_POST['activo'];
 	
-	$insert = new funcionesCRUD();
+	$insert = new queries();
 	$insert->insertProducto($modelo, $precio, $color, $activo);
 }
 

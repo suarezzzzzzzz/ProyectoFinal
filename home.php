@@ -1,7 +1,7 @@
 <?php
 require_once 'clases/Usuario.php';
 require_once 'clases/database.php';
-include_once 'clases/funcionesCRUD.php';
+include_once 'clases/queries.php';
 
 // Retomamos la sesión previamente iniciada, y recuperamos el objeto Usuario
 // que contiene los datos del usuario autenticado:
@@ -18,7 +18,7 @@ $db = new Database();
 $con = $db->conectar();
 
 //llama a la funcion queryHome para mostrar todos los productos en el html
-$result = new funcionesCRUD();
+$result = new queries();
 $resultado = $result->queryHome();
 
 ?>

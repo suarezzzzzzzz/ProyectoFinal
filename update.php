@@ -1,6 +1,6 @@
 <?php
 	include_once 'clases/conexionCRUD.php';
-	include_once 'clases/funcionesCRUD.php';
+	include_once 'clases/queries.php';
 
 	if (isset($_POST['guardar'])){
 		$modelo = $_POST['modelo'];
@@ -8,13 +8,13 @@
 		$color = $_POST['color'];
 		$activo = $_POST['activo'];
 		
-	$actualizar = new funcionesCRUD();
+	$actualizar = new queries();
 	$update = $actualizar->updateProducto($modelo, $precio, $color, $activo);
 		
 	
 }
-	require_once 'clases/funcionesCRUD';
-	$modificar = new funcionesCRUD();
+	require_once 'clases/queries';
+	$modificar = new queries();
 	$resultado = $modificar->updateProducto($modelo, $precio,$color,$activo);
 		
 ?>

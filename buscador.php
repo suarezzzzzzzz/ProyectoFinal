@@ -19,7 +19,7 @@
 </html>
 <?php
 require_once 'clases/database.php';
-require_once 'clases/funcionesCRUD.php';
+require_once 'clases/queries.php';
 
 $modelo = $_POST['modelo'];
 $color = $_POST['color'];
@@ -30,7 +30,7 @@ $db = new Database();
 $con = $db->conectar();
 
 //llama a la funcion filtrarProducto para hacer el filtrado
-$filtro = new funcionesCRUD();
+$filtro = new queries();
 $result = $filtro->filtrarProducto($modelo, $precio, $color);
 
     
