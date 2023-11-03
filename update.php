@@ -8,14 +8,11 @@
 		$color = $_POST['color'];
 		$activo = $_POST['activo'];
 		
-	$actualizar = new queries();
-	$update = $actualizar->updateProducto($modelo, $precio, $color, $activo);
-		
 	
+		
 }
-	require_once 'clases/queries';
-	$modificar = new queries();
-	$resultado = $modificar->updateProducto($modelo, $precio,$color,$activo);
+$actualizar = new queries();
+$resultado = $actualizar->updateProducto($modelo, $precio, $color, $activo);
 		
 ?>
 <!DOCTYPE html>

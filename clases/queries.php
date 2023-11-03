@@ -73,7 +73,7 @@ class queries extends Connection{
 
     /*ACTUALIZAR */
     public function updateProducto($modelo, $precio,$color, $activo){
-        $sql = "UPDATE productos SET modelo=$modelo,precio=$precio,color=$color,activo=$activo WHERE id_producto=' .$this->id_producto";
+        $sql = "UPDATE productos SET modelo=:modelo,precio=:precio,color=:color,activo=:activo WHERE id_producto=' .$this->id_producto";
         
         $query = $this->con->prepare($sql);
         $query->bindValue(':modelo',$resultado->getmodelo());
@@ -86,9 +86,4 @@ class queries extends Connection{
       }
     
   }
-    /*public function buscarProducto($valor_buscar){
-        $result = $this->con->query("SELECT * FROM productos WHERE modelo LIKE '$valor_buscar'");
-        $buscar = $result->fetch_all();
-        return $buscar;        
-    }*/
-
+   

@@ -3,7 +3,7 @@
 <head>
 	<title>LOGIN</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" href="bootstrap.min2.css">
+	<link rel="stylesheet" href="css/bootstrap.min2.css">
 </head>
 <body>
 <div class="login-card">
